@@ -14,18 +14,33 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Perfil',
-      url: '/folder/Inbox',
+      url: 'profile',
       icon: 'person-circle'
     },  
     {
       title: 'Cadastrar Lista',
-      url: '/folder/Inbox',
+      url: 'register-list',
       icon: 'add'
     },
     {
       title: 'Mostrar Lista',
-      url: '/folder/Inbox',
+      url: 'show-list',
       icon: 'list-circle'
+    },
+    {
+      title: 'Meu Desempenho',
+      url: 'my-performance',
+      icon: 'stats-chart'
+    },
+    {
+      title: 'Ajuda',
+      url: 'help',
+      icon: 'help-circle'
+    },
+    {
+      title: 'Sair',
+      url: '/folder/Inbox',
+      icon: 'close'
     },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
