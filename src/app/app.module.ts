@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -9,7 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserService } from 'src/services/UserServices';
-import { HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule } from '@angular/common/http'
+import { ErrosGlobais } from 'src/shared/ErrosGlobais';
+import { LoginServices } from 'src/services/LoginServices';
+import { CategoryService } from 'src/services/CategoryService';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,8 +27,11 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     UserService,
+    LoginServices,
+    CategoryService,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: ErrorHandler, useClass: ErrosGlobais}
   ],
   bootstrap: [AppComponent]
 })

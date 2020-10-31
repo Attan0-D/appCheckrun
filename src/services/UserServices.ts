@@ -3,6 +3,7 @@ import { IUser } from 'src/interfaces/IUserService';
 import { User } from 'src/models/User';
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
+import { Global } from 'src/shared/Global';
 
 /* 
     SEMPRE IR PRO APP.MODULES DENTRO DO PROVIDER PRA COLOCAR NOSSO SERVICE
@@ -16,36 +17,31 @@ import { Injectable } from '@angular/core';
 
 export class UserService implements IUser {
 
-    constructor(private _httpClient: HttpClient){
-    }
+    public apiUrl: string = Global.ApiUrl+"user"
+
+    constructor ( private _http : HttpClient){}
 
     //Desestruturação das variveis
-    cadastrar({name, email, password, confirmedPassword}: User): Observable<User> {
+    cadastrar({name, email, password, confirmPassword}: User): Observable<User> {
         
-        if(!name || !email || !password ) throw new Error("Preencha todos os campos!.");
-        if(password != confirmedPassword) throw new Error("As senhas não coincidem!.");
-        
-        //Cadastro User
-        const user = {
-            name,
-            email,
-            password,
-            confirmedPassword
-        }
+        if(!name ) throw new Error("Preencha o campo nome.");
+        if(!email) throw new Error("Preencha o campo email!.");
+        if(!password ) throw new Error("Preencha o campo senha!.");
+        if(password != confirmPassword) throw new Error("As senhas não coincidem!.");
 
-        console.log(user) 
-    
-        throw new Error("Usúario cadastrado com sucesso!.");
-    
+        return this._http.post<User>(this.apiUrl,{name,email,password,confirmPassword})
+        
     }
+
     atualizar(user: User): Observable<User> {
         throw new Error('Method not implemented.');
     }
     logar(user: User): void {
-        throw new Error('Method not implemented.');
+        localStorage.setItem('userlogado',JSON.stringify(user))
     }
     retornarUsuarioLogado(): User {
-        throw new Error('Method not implemented.');
-    }
+        const user: User = JSON.parse(localStorage.getItem('userlogado'))
+         return user;
+    };
     
-}
+}   

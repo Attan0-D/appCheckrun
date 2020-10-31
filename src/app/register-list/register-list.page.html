@@ -3,10 +3,71 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Cadastrar Lista</ion-title>
+    <ion-title>Cadastrar Lista de Tarefas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <ion-item>
+    <ion-label position="floating" >Insira o nome da lista...</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  
+ 
+    <ion-item>
+    <ion-label>Categoria</ion-label>
+    <ion-select [(ngModel)]="listq.category_id" interface="action-sheet" class="custom-options">
+      <ion-select-option value="brown">Saindo de Casa</ion-select-option>
+      <ion-select-option value="blonde">Saindo do Trabalho</ion-select-option>
+      <ion-select-option value="black">Lista de Compras</ion-select-option>
+      <ion-select-option value="red">Meus Estudos</ion-select-option>
+      <ion-select-option value="red">Terminando a Reunião</ion-select-option>
+    </ion-select>
+  </ion-item> 
+<!--  
+
+  <ion-item>
+    <ion-label position="floating">Categoria</ion-label>
+    <ion-input [(ngModel)]="category.name" type="text"></ion-input>
+  </ion-item> -->
+
+
+  <ion-item>
+  <ion-label for="">Horário</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type ="time"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label>Periodicidade</ion-label>
+    <ion-select interface="action-sheet" class="custom-options">
+      <ion-select-option value="brown">Todos os dias</ion-select-option>
+      <ion-select-option value="blonde">Segunda - Sexta</ion-select-option>
+      <ion-select-option value="black">Somente hoje</ion-select-option>
+      <ion-select-option value="red">Todos sábados</ion-select-option>
+      <ion-select-option value="red">Todos domingos</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+
+  <ion-item>
+
+    <ion-button 
+      shape="round"
+      [ngClass]="{'diaSelecionado':verificarDiaMarcado(i)}"
+      *ngFor="let day of days; let i = index" 
+      (click)="setDays(i);" > {{day}} 
+    </ion-button>
+
+  </ion-item>
+
+  
+  <ion-button expand ="full" (click)="saveLista();" >Criar lista</ion-button>
+  <!-- <ion-button expand ="full" (click)="salvar();" >Criar lista</ion-button> -->
+
+
 
 </ion-content>

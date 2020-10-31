@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Sair',
-      url: '/folder/Inbox',
+      url: 'login',
       icon: 'close'
     },
   ];

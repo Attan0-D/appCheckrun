@@ -1,0 +1,43 @@
+
+
+<ion-content>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        
+        <!-- <ion-list>
+          <ion-item *ngFor="let item of items">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="" [alt] ="etc"></ion-img>
+            </ion-thumbnail>
+            <ion-label>{{item.text}}</ion-label>
+          </ion-item>
+        </ion-list> -->
+
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input  [(ngModel)]="login.email" type="email"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input [(ngModel)]="login.password" type="password"></ion-input>
+        </ion-item> 
+           
+        <ion-button expand ="full"  (click)="fazerLogin()"  >Entrar</ion-button>
+        
+        <ion-button expand ="full" (click)="esqueciSenha()">Esqueci minha senha</ion-button>
+        
+        <p>Novo Usuário? Crie já sua conta!</p>
+
+        <ion-button expand ="full" (click)="fazerCadastro();">Criar Conta</ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  
+    
+</ion-content>

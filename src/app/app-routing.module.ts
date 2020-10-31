@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'created-user',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -34,6 +34,43 @@ const routes: Routes = [
     path: 'help',
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'create-question',
+    loadChildren: () => import('./create-question/create-question.module').then( m => m.CreateQuestionPageModule)
+  },
+  {
+    path: 'beginning',
+    loadChildren: () => import('./beginning/beginning.module').then( m => m.BeginningPageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'forgotten-password',
+    loadChildren: () => import('./forgotten-password/forgotten-password.module').then( m => m.ForgottenPasswordPageModule)
+  },
+  {
+    path: 'confirm-code',
+    loadChildren: () => import('./confirm-code/confirm-code.module').then( m => m.ConfirmCodePageModule)
+  },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
+  {
+    path: 'terms-and-conditions',
+    loadChildren: () => import('./terms-and-conditions/terms-and-conditions.module').then( m => m.TermsAndConditionsPageModule)
+  },
+  
 
 ];
 

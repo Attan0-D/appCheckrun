@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button icon="arrow-back"></ion-back-button>
     </ion-buttons>
     <ion-title>Cadastro</ion-title>
   </ion-toolbar>
@@ -18,7 +18,7 @@
         </ion-item>
       
         <ion-item>
-          <ion-label position="floating">Emaill</ion-label>
+          <ion-label position="floating">Email</ion-label>
           <ion-input [(ngModel)]="user.email" type="email"></ion-input>
         </ion-item>
       
@@ -29,11 +29,15 @@
       
         <ion-item>
           <ion-label position="floating">Confirme a Senha</ion-label>
-          <ion-input [(ngModel)]="user.confirmedPassword" type="password"></ion-input>
+          <ion-input [(ngModel)]="user.confirmPassword" type="password"></ion-input>
         </ion-item>
       
-        <ion-button expand="full" (click)="criarUsuario()" >Salvar</ion-button>
+        <ion-label>Aceito os <a (click)="termosCondicoes();">termos e condições</a></ion-label>
+        <ion-checkbox color="primary"></ion-checkbox>
 
+        <ion-button expand="full" (click)="criarUsuario()" >Criar Conta</ion-button>
+
+        
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/User';
 import { UserService } from 'src/services/UserServices';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-created-user',
@@ -11,13 +13,25 @@ export class CreatedUserPage implements OnInit {
 
   public user: User = new User()
 
-  constructor(private _userService: UserService ) { }
+  constructor(
+    private _userService: UserService,
+    private _menu: MenuController,
+    private _router: Router, 
+    )    {this._menu.enable(false); }
 
   ngOnInit() {
   }
 
   criarUsuario(){
-    this._userService.cadastrar(this.user)
+  
+    this._userService.cadastrar(this.user).subscribe(response => {
+      return this._router.navigate(['/login'])
+
+    })
+    
   }
 
+  termosCondicoes(){
+    this._router.navigate(['/terms-and-conditions'])
+  }
 }

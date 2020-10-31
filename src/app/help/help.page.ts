@@ -13,3 +13,4 @@ export class HelpPage implements OnInit {
   }
 
 }
+
