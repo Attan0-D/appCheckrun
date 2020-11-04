@@ -13,7 +13,9 @@ export class RegisterListPage implements OnInit {
   public category:Category = new Category();
 
   public listq:List = new List();
+
   public days:Array<string> = ['D','S','T','Q','Q','S','S'];
+  public categoryBanco: Array<string> = ['Saindo de Casa','Saindo do Trabalho','Lista de Compras','Meus Estudos','Outros'] 
 
   constructor(
     private _router: Router,
@@ -38,15 +40,19 @@ export class RegisterListPage implements OnInit {
   // }
 
   saveLista(){
+    this._router.navigate(['/create-question'])
     console.log(this.listq)
   }
+  
   setDays(day:number){
     let diasMarcados:Array<number> = this.listq.days ? JSON.parse(this.listq.days): [];
     
     
     if (diasMarcados.includes(day)){
+
       let indexDiasMarcados = diasMarcados.findIndex(d => d == day)
       diasMarcados.splice(indexDiasMarcados,1)    
+    
     }else{  
       diasMarcados.push(day); 
     }

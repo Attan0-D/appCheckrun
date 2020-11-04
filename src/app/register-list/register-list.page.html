@@ -10,28 +10,29 @@
 <ion-content>
   
   <ion-item>
-    <ion-label position="floating" >Insira o nome da lista...</ion-label>
+    <ion-label position="floating">Insira o nome da lista...</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
   
- 
-    <ion-item>
+  <ion-item>
     <ion-label>Categoria</ion-label>
     <ion-select [(ngModel)]="listq.category_id" interface="action-sheet" class="custom-options">
-      <ion-select-option value="brown">Saindo de Casa</ion-select-option>
-      <ion-select-option value="blonde">Saindo do Trabalho</ion-select-option>
+
+      <ion-select-option *ngFor="let cat of categoryBanco"> {{ cat }} </ion-select-option>
+      <!-- <ion-select-option value="blonde">Saindo do Trabalho</ion-select-option>
       <ion-select-option value="black">Lista de Compras</ion-select-option>
       <ion-select-option value="red">Meus Estudos</ion-select-option>
-      <ion-select-option value="red">Terminando a Reunião</ion-select-option>
+      <ion-select-option value="red">Terminando a Reunião</ion-select-option> -->
+
     </ion-select>
   </ion-item> 
-<!--  
 
-  <ion-item>
+
+  <!-- <ion-item>
     <ion-label position="floating">Categoria</ion-label>
     <ion-input [(ngModel)]="category.name" type="text"></ion-input>
-  </ion-item> -->
+  </ion-item>  -->
 
 
   <ion-item>
