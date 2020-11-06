@@ -18,7 +18,8 @@ import { Global } from 'src/shared/Global';
 export class UserService implements IUser {
 
     public apiUrl: string = Global.ApiUrl+"user"
-
+    // public idUser = localStorage.getItem('id')
+    
     constructor ( private _http : HttpClient){}
 
     //Desestruturação das variveis
@@ -41,7 +42,7 @@ export class UserService implements IUser {
     }
     retornarUsuarioLogado(): User {
         const user: User = JSON.parse(localStorage.getItem('userlogado'))
-         return user;
+        return user;
     };
     
 }   

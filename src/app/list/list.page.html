@@ -5,16 +5,28 @@
 </ion-header>
 
 <ion-content>
-  <p>PERGUNTA 1</p>
-  <p>PERGUNTA 2</p> 
-  <p>PERGUNTA 3</p>
-  <p>PERGUNTA 4</p>
-  <p>PERGUNTA 5</p>
-  <p>PERGUNTA 6</p>
-  <p>PERGUNTA 7</p>
-  <p>PERGUNTA 8</p>
-  <p>PERGUNTA 9</p>
 
+  <ion-grid>
+
+    <ion-row *ngIf="listq.length">
+
+      <ion-col>
+        
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Botão Criar List -->
+    <ion-row *ngIf="listq.length == 0">
+
+      <ion-col>
+        <h5>Você ainda não tem listas cadastrada. </h5>
+        <ion-button (click)="cadastrarLista()" expand ="full">Criar Lista</ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
 
 
 

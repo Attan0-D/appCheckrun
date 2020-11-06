@@ -3,6 +3,7 @@ import { User } from 'src/models/User';
 import { UserService } from 'src/services/UserServices';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { report } from 'process';
 
 @Component({
   selector: 'app-created-user',
@@ -23,10 +24,8 @@ export class CreatedUserPage implements OnInit {
   }
 
   criarUsuario(){
-  
     this._userService.cadastrar(this.user).subscribe(response => {
-      return this._router.navigate(['/login'])
-
+      return response
     })
     
   }

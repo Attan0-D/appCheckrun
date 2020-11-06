@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { List } from 'src/models/List';
 
 @Component({
@@ -8,11 +9,16 @@ import { List } from 'src/models/List';
 })
 export class ListPage implements OnInit {
 
-  public listq = new List();
+  public listq: List[]= new Array<List>();
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit() {
+  }
+  cadastrarLista(){
+    this._router.navigate(['/register-list']) 
   }
 
     
