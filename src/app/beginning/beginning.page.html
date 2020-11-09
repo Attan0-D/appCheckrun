@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-menu-button></ion-menu-button>
     <ion-title>Vamos começar</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -37,6 +38,10 @@
         <p> Slide 03</p>
       </ion-slide>
     </ion-slides>
+
+    <ion-col>
+      <ion-button (click)="toHome();" expand="full">Pular Tutorial</ion-button>
+    </ion-col>
 
   </div>
 

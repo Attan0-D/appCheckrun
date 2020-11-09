@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
+import { UserService } from 'src/services/UserServices';
 
 @Component({
   selector: 'app-root',
@@ -37,18 +39,24 @@ export class AppComponent implements OnInit {
       url: 'help',
       icon: 'help-circle'
     },
-    {
-      title: 'Sair',
-      url: 'login',
-      icon: 'close'
-    },
+    // {
+    //   title: 'Sair',
+    //   url: 'login',
+    //   icon: 'close'
+    // },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private _router: Router,
+    private _menu: MenuController,
+    private _userService : UserService,
+
+
+
   ) {
     this.initializeApp();
   }
@@ -66,4 +74,17 @@ export class AppComponent implements OnInit {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
   }
+
+  logout(){
+    //chamada do metodo
+    this._userService.logout();
+    
+    //bloqueio do menu
+    this._menu.swipeGesture(false);
+    
+    //redirecionamento
+    this._router.navigate(['/login']);
+      
+  }
+
 }

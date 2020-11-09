@@ -20,29 +20,46 @@ export class UserService implements IUser {
     public apiUrl: string = Global.ApiUrl+"user"
     // public idUser = localStorage.getItem('id')
     
-    constructor ( private _http : HttpClient){}
+    constructor ( private _httpClient : HttpClient){}
 
-    //Desestruturação das variveis
-    cadastrar({name, email, password, confirmPassword}: User): Observable<User> {
-        
-        if(!name ) throw new Error("Preencha o campo nome.");
-        if(!email) throw new Error("Preencha o campo email!.");
-        if(!password ) throw new Error("Preencha o campo senha!.");
-        if(password != confirmPassword) throw new Error("As senhas não coincidem!.");
-
-        return this._http.post<User>(this.apiUrl,{name,email,password,confirmPassword})
-        
+    buscarUsuario(): Observable<User> {
+        const user: User = this.retornarUsuarioLogado();
+        return this._httpClient.get<User>(`${this.apiUrl}/${user.id}`);
     }
 
+    //método para cadastro do usuario
+    cadastrar(user: User): Observable<User> {
+        
+        if(!user.name ) throw new Error("Preencha o campo nome.");
+        if(!user.email) throw new Error("Preencha o campo email!.");
+        if(!user.password ) throw new Error("Preencha o campo senha!.");
+        if(user.password != user.confirmPassword) throw new Error("As senhas não coincidem!.");
+
+        return this._httpClient.post<User>(this.apiUrl,user)
+        
+    }
+    
+    //método para atualizar o usuario
     atualizar(user: User): Observable<User> {
         throw new Error('Method not implemented.');
     }
+
+    //método para logar o usuario (salva-lo no localStorage)
     logar(user: User): void {
         localStorage.setItem('userlogado',JSON.stringify(user))
     }
+
+    //retornar usuario logado
     retornarUsuarioLogado(): User {
         const user: User = JSON.parse(localStorage.getItem('userlogado'))
         return user;
-    };
+    }
+
+    //método para logout do usuario
+    logout(): void {
+        localStorage.clear();
+    }
+
+    
     
 }   

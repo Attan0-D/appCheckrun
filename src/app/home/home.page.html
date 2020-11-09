@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+  <ion-col>
+    <h2>Você ainda não possui listas. Faça-as Agora!</h2>
+    <ion-button (click)="registerList();" expand="full">Fazer Lista</ion-button>
+  </ion-col>
 
 </ion-content>

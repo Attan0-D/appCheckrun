@@ -1,4 +1,7 @@
  import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { List } from 'src/models/List';
+import { ListService } from 'src/services/ListService';
 
 @Component({
   selector: 'app-show-list',
@@ -7,10 +10,29 @@
 })
 export class ShowListPage implements OnInit {
 
-  constructor() { }
+  public lists: List[] = new Array<List>();
+
+  constructor(
+    private _router: Router,
+    private _listService: ListService) 
+    {
+      this.obterListas();
+    }
 
   ngOnInit() {
   }
 
+  async obterListas(){
+    const AllList = await this._listService.retornarListas();
+    this.lists = AllList;
+  }
+
+  registerList(){
+    this._router.navigate(['/register-list']);
+  }
+
+  removeList(index){
+    this.lists.splice(index,1);
+  }
 }
  

@@ -9,19 +9,44 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row *ngIf="lists.length > 0">
 
-  <ion-searchbar animated></ion-searchbar>
-  <p>LISTA 1</p> 
-  <p>LISTA 2</p> 
-  <p>LISTA 3</p> 
-  <p>LISTA 4</p> 
-  <p>LISTA 5</p> 
-  <p>LISTA 6</p> 
-  <p>LISTA 7</p> 
-  
-  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
+        <ion-col>
+
+          
+          <ion-list>
+            <ion-item *ngFor= "let list of lists"> 
+              <ion-label> 
+                {{ list.name }}
+              </ion-label> 
+              <ion-icon (click)="removeList(i);" name="create-outline" slot="end" ></ion-icon>
+              <ion-icon (click)="removeList(i);" name="close-outline" slot="end" ></ion-icon>
+            </ion-item>
+          </ion-list>
+
+          <ion-button (click)="registerList();" expand="full">Fazer Lista</ion-button>
+
+
+        </ion-col>
+    </ion-row>
+    
+
+
+
+    <ion-row *ngIf="lists.length == 0">
+      
+    <ion-col>
+      <h2>Você ainda não possui listas. Faça-as Agora!</h2>
+      <ion-button (click)="registerList();" expand="full">Fazer Lista</ion-button>
+    </ion-col>
+
+  </ion-row>
+    
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+  </ion-grid>
 </ion-content>
 

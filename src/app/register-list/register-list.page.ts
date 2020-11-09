@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/services/CategoryService';
 import { Category } from 'src/models/Category';
 import { List } from 'src/models/List';
 import { ListService } from 'src/services/ListService';
 import { UserService } from 'src/services/UserServices';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Question } from 'src/models/Question';
 
 @Component({
@@ -17,14 +17,15 @@ import { Question } from 'src/models/Question';
 export class RegisterListPage implements OnInit {
 
   public listq:List = new List();
-
   public days:Array<string> = ['D','S','T','Q','Q','S','S'];
-  
+  public _htmlLoading: HTMLIonLoadingElement;
+
   constructor(
     private _router: Router,
     private _listService: ListService,
     private _userService: UserService,
     private _alertController:AlertController,
+    private _loading: LoadingController
   )
   {
     console.log(this.listq)
@@ -32,6 +33,16 @@ export class RegisterListPage implements OnInit {
 
   ngOnInit() {
   }
+
+  async loading(){
+    this._htmlLoading = await this._loading.create({
+    cssClass: 'my-custom-class',
+    message: 'Aguarde...',
+    
+  });
+  await this._htmlLoading.present();
+}
+
   async addQuestao(){
     const alert = await this._alertController.create({
       cssClass: 'my-custom-class',
@@ -72,12 +83,20 @@ export class RegisterListPage implements OnInit {
   removerQuestao(index){
     this.listq.questions.splice(index,1);
   }
-  saveLista(){
-    this._listService.cadastrar(this.listq).subscribe(response => {
-      console.log(response);
-    })
-    console.log(this.listq);
-  }
+
+  async saveLista(){
+    // await this.loading();
+    console.log(this._htmlLoading);
+      
+      this._listService.cadastrar(this.listq, this._htmlLoading).subscribe(response => {
+        console.log(response);
+        // this._htmlLoading.dismiss();
+        this._router.navigate(['/show-list']);
+      }) 
+        console.log(this.listq);
+    } 
+  
+
   
   setDays(day:number){
    
@@ -92,7 +111,7 @@ export class RegisterListPage implements OnInit {
     }
 
     this.listq.days = JSON.stringify(diasMarcados);   
-    console.log(day)
+    console.log(day);
   }
 
   verificarDiaMarcado(day:number){
@@ -100,6 +119,5 @@ export class RegisterListPage implements OnInit {
     return diasMarcados.includes(day)
   }
   
-
-
 }
+
