@@ -23,11 +23,28 @@ export class CreatedUserPage implements OnInit {
   ngOnInit() {
   }
 
+  data = [
+    {
+      name: 'primary',
+      selected: false
+    }
+  ]
+
   criarUsuario(){
     this._userService.cadastrar(this.user).subscribe(response => {
       return response
     })
+    this._router.navigate(['/login'])
     
+  }
+
+  onClick(  ){
+    this.data = [
+      {
+        name: 'primary',
+        selected: true
+      }
+    ]
   }
 
   termosCondicoes(){

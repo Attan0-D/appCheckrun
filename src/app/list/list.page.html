@@ -1,33 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>MINHA LISTA</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-title> {{ lista.name }}  </ion-title>
+    </ion-buttons>   
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
-  <ion-grid>
+<ion-content> 
 
-    <ion-row *ngIf="listq.length">
+  <ion-list>
 
-      <ion-col>
+    <ion-item>
+      <ion-label>
+       <strong>Nome da Lista</strong>
+        <p>{{ lista.name }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <strong>Horáro da Lista</strong>
+        <p>{{ lista.hour }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <strong>O que devo lembrar?</strong>
+      </ion-label>
+    </ion-item> 
         
-      </ion-col>
+    
+    <ion-item *ngFor= "let q of questaoLista;let i = index">
+      <ion-label>
+        <p>{{ q.description }}</p>
+      </ion-label>
 
-    </ion-row>
+    </ion-item>
+    <!-- <ion-button  expand="full">Editar</ion-button> -->
+    <ion-button (click)="editList();" expand="full">Editar</ion-button>
 
-    <!-- Botão Criar List -->
-    <ion-row *ngIf="listq.length == 0">
-
-      <ion-col>
-        <h5>Você ainda não tem listas cadastrada. </h5>
-        <ion-button (click)="cadastrarLista()" expand ="full">Criar Lista</ion-button>
-      </ion-col>
-
-    </ion-row>
-
-  </ion-grid>
+    <ion-button (click)="deleteList();" expand="full">Excluir lista</ion-button>
 
 
+  </ion-list>
 
 </ion-content>

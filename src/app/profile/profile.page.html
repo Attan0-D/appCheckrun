@@ -3,27 +3,51 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title> <strong>Perfil</strong> </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-avatar>
-    <img src="/src/assets/usuario-masculino.svg">
-  </ion-avatar>
-  
-  <ion-chip>
-    <ion-avatar>
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-    </ion-avatar>
-    <ion-label>Chip Avatar</ion-label>
-  </ion-chip>
-  
-  <ion-item>
-    <ion-avatar slot="start">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-    </ion-avatar>
-    <ion-label>Item Avatar</ion-label>
-  </ion-item>
 
+<ion-content>
+  
+    <div class="ion-align-self">
+      <ion-row>
+        <ion-col >
+          <img id="img-user"width="60" height="60"src="./assets/user.jpeg"/>
+        </ion-col>
+      </ion-row>
+    </div>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input [(ngModel)]="user.name" type="text"></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+          </ion-item> 
+        
+          <ion-item>
+            <ion-label position="floating">Confirme a Senha</ion-label>
+            <ion-input [(ngModel)]="user.confirmPassword" type="password"></ion-input>
+          </ion-item>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    
+  
+    <ion-button expand="full" (click)="atualizarUsuario();" >Atualizar meu Perfil</ion-button>
+    
 </ion-content>
+

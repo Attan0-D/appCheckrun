@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>It's Check Time</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+          <ion-item>
+            <div id="text1">
+                <p>Saindo de Casa</p>
+            </div>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <img id= "img-check"width="120" height="120" src="./assets/chekcList.jpeg"/>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+          <ion-item>
+            <div id="text2">
+              <ion-label>
+                <h3><strong>E aí, você fez?</strong></h3>
+              </ion-label>
+            </div>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        
+        <ion-segment 
+        (ionChange)="segmentChanged($event)"
+        *ngFor= "let q of questaoLista;"
+        > 
+
+      <ion-col size="7">
+         <ion-label>
+           <p>{{ q.description }}</p>
+         </ion-label>
+      </ion-col>
+
+    
+         <ion-segment-button  value="friends">
+           <ion-label color="tertiary">Sim</ion-label>
+         </ion-segment-button>
+       
+         <ion-segment-button  value="enemies">
+           <ion-label color="danger">Não</ion-label>
+         </ion-segment-button>
+      
+       
+       </ion-segment>
+
+      
+       
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col >
+        <ion-button expand="full">Acabei!</ion-button>
+
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+ 
+
+
+
+</ion-content>

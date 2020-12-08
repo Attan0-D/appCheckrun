@@ -18,7 +18,6 @@ import { Global } from 'src/shared/Global';
 export class UserService implements IUser {
 
     public apiUrl: string = Global.ApiUrl+"user"
-    // public idUser = localStorage.getItem('id')
     
     constructor ( private _httpClient : HttpClient){}
 
@@ -41,7 +40,14 @@ export class UserService implements IUser {
     
     //método para atualizar o usuario
     atualizar(user: User): Observable<User> {
-        throw new Error('Method not implemented.');
+
+        if(!user.name ) throw new Error("Preencha o campo nome.");
+        if(!user.email) throw new Error("Preencha o campo email!.");
+        if (user.password){
+            if(user.password != user.confirmPassword) throw new Error("As senhas não coincidem!.");
+        }
+
+        return this._httpClient.put<User>(`${this.apiUrl}/${user.id}`,user)
     }
 
     //método para logar o usuario (salva-lo no localStorage)
@@ -59,7 +65,4 @@ export class UserService implements IUser {
     logout(): void {
         localStorage.clear();
     }
-
-    
-    
 }   

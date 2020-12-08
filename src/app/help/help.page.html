@@ -2,15 +2,94 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>Ajuda</ion-title>
+    <ion-title>Vamos Comecar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-col>
-    <ion-button (click)="toBeginning();" expand="full">Refazer Tutorial</ion-button>
-  </ion-col>
+
+  <div class='ion-padding'>
+    <h1> O que é o Check & Run? </h1>
+    <ion-slides pager>
+      <ion-slide style="background-color: purple;">
+        <p>Check & Run é um aplicativo prático e objetivo para gestão de tarefas cotidianas.</p>
+      </ion-slide>
+
+      <ion-slide style="background-color:green;">
+        <p>A aplicação utiliza de um sistema simples e rápido de notificações, essas notificações
+          desempenham um papel semelhante ao de um lembrete.</p>
+      </ion-slide>
+
+      <ion-slide style="background-color: blue;">
+        <p>Estes "lembretes" são chamados de Tarefas, e estas ficam armazenadas em uma lista. </p>
+      </ion-slide>
+
+      <ion-slide style="background-color: red;">
+        <p>Logo, cada lista tem suas próprias tarefas, e cada notificação disparada
+           é um conjunto de destas tarefas sendo lembradas ao usuário. </p>
+      </ion-slide>
+    </ion-slides>
+
+  </div>
+
+  <div class='ion-padding'>
+    <h1>Como criar as minhas listas?</h1>
+    <ion-slides pager>
+      <ion-slide style="background-color: red;">
+        <p>Você poderá criar sua lista em "Criar Lista" 
+          ou acessando a página "Mostrar Lista".</p>
+      </ion-slide>
+
+      <ion-slide style="background-color: blue;">
+        <p>Ao entrar pela primeira vez,
+          esta página lhe redirecionará para a primeira página citada, onde você
+          entrará com os dados da sua lista.</p>
+      </ion-slide>
+
+      <ion-slide style="background-color: green;">
+        <p>Todos os dados deverão ser preenchidos, e voce poderá editar ou excluir 
+          a sua lista o momento que desejar.</p>
+      </ion-slide>
+
+      <ion-slide style="background-color: purple;">
+        <p>Para excluir ou deleta-la, clique na lista que deseja. 
+          Assim, uma página com os dados colocados por você estará visível 
+          junto a dois botões: "Excluir" e "Editar".</p>
+      </ion-slide>
+    </ion-slides>
+
+  </div>
+
+  <div class='ion-padding'>
+    <h1>Como funciona as notificações?</h1>
+    <ion-slides pager>
+      <ion-slide style="background-color: green;">
+        <p>No primeiro tópico, abordamos a respeito do conceito de listas e tarefas.
+          Essas notificações serão feitas por lista.
+        </p>
+      </ion-slide>
+
+      <ion-slide style="background-color: blue;">
+        <p>Ou seja, quando você for notificado na data especificada,
+           você terá que que responder as perguntas
+           que foram submetidas no aplicativo.
+        </p>
+      </ion-slide>
+
+      <ion-slide style="background-color: purple;">
+        <p>Por isso, tenha em mente que as descrições das tarefas que você criar
+          deverão ser curtas e objetivas.
+        </p>
+      </ion-slide>
+    </ion-slides>
+
+
+    <h1>Tudo Pronto? Agora vamos começar!</h1>
+    <ion-col>
+      <ion-button (click)="toHome();" expand="full">Pular Tutorial/ Começar</ion-button>
+    </ion-col>
+
+  </div>
 
 </ion-content>

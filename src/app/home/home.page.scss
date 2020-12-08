@@ -1,0 +1,28 @@
+ion-content {
+    align-items: center;
+    justify-content: center;
+    ion-row{
+        margin: 30px auto;
+        
+        h2{
+            align-items: center;
+        }
+        h4{
+            margin-top: 8px;
+        }
+
+        ion-col{
+            div.ajuda{
+                font-size: 18px;
+                text-decoration: none;
+                background: #FFEBCD ;
+                font: italic;
+            }
+            
+        }
+        
+    }
+
+
+    --color: #000;
+}

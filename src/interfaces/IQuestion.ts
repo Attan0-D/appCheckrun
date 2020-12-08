@@ -5,4 +5,5 @@ export interface IQuestionService {
     cadastrar(question : Question): Observable <Question>;
     atualizar(question : Question): Observable <Question>;
     excluir(question : Question): void;
+    listar(id:number): Observable <Question>;
 }

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 export interface IListService {
     cadastrar(dados: List, loading: HTMLIonLoadingElement): Observable<List>;
     atualizar(list : List): Observable<List>;
-    excluir(list : List): void;
+    excluir(id: number): Observable<List>;
     retornarIdLista(list : List): void;
     retornarListas(): Promise<List[]>;
 }

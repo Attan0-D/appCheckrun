@@ -1,14 +1,12 @@
-import { Component, ErrorHandler, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoryService } from 'src/services/CategoryService';
-import { Category } from 'src/models/Category';
 import { List } from 'src/models/List';
 import { ListService } from 'src/services/ListService';
 import { UserService } from 'src/services/UserServices';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Question } from 'src/models/Question';
 
-@Component({
+@Component({  
   selector: 'app-register-list',
   templateUrl: './register-list.page.html',
   styleUrls: ['./register-list.page.scss'],
@@ -16,42 +14,31 @@ import { Question } from 'src/models/Question';
 
 export class RegisterListPage implements OnInit {
 
-  public listq:List = new List();
+  public listq:List = new List(); 
   public days:Array<string> = ['D','S','T','Q','Q','S','S'];
   public _htmlLoading: HTMLIonLoadingElement;
 
   constructor(
     private _router: Router,
     private _listService: ListService,
-    private _userService: UserService,
     private _alertController:AlertController,
-    private _loading: LoadingController
   )
   {
-    console.log(this.listq)
   }
 
   ngOnInit() {
   }
 
-  async loading(){
-    this._htmlLoading = await this._loading.create({
-    cssClass: 'my-custom-class',
-    message: 'Aguarde...',
-    
-  });
-  await this._htmlLoading.present();
-}
-
+  
   async addQuestao(){
     const alert = await this._alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Cadastrar Questão!',
+      header: 'Adicionar Tarefa',
       inputs: [
         {
           name: 'question',
           type: 'text',
-          placeholder: 'Nome da Questão'
+          placeholder: 'Nome da Tarefa'
         },
       ],
       buttons: [
@@ -80,21 +67,16 @@ export class RegisterListPage implements OnInit {
 
     await alert.present();
   }
+
   removerQuestao(index){
     this.listq.questions.splice(index,1);
   }
 
-  async saveLista(){
-    // await this.loading();
-    console.log(this._htmlLoading);
-      
-      this._listService.cadastrar(this.listq, this._htmlLoading).subscribe(response => {
-        console.log(response);
-        // this._htmlLoading.dismiss();
-        this._router.navigate(['/show-list']);
-      }) 
-        console.log(this.listq);
-    } 
+  saveLista(){
+    this._listService.cadastrar(this.listq, this._htmlLoading).subscribe(() => {
+      this._router.navigate(['/show-list']);
+    }) 
+  } 
   
 
   

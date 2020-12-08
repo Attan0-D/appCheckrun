@@ -15,6 +15,7 @@ import { ErrosGlobais } from 'src/shared/ErrosGlobais';
 import { LoginServices } from 'src/services/LoginServices';
 import { CategoryService } from 'src/services/CategoryService';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
