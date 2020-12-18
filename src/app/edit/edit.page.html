@@ -1,0 +1,100 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Alterar lista de Tarefas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  
+  <ion-item>
+    <ion-label position="floating">Insira o nome da lista</ion-label>
+    <ion-input [(ngModel)]="dados.name" type="text"></ion-input>
+  </ion-item>
+
+  
+  <ion-item>
+    <ion-label>Categoria</ion-label>
+    <ion-select 
+      [(ngModel)]="dados.category_id"  
+      class="custom-options"
+      interface="action-sheet"
+    >
+      <ion-select-option value=1>Saindo de casa</ion-select-option>
+      <ion-select-option value=2>Saindo do Trabalho</ion-select-option>
+      <ion-select-option value=3>Lista de Compras</ion-select-option>
+      <ion-select-option value=4>Meus Estudos</ion-select-option>
+      <ion-select-option value=5>Outros</ion-select-option>
+
+    </ion-select>
+  </ion-item> 
+
+
+  <!-- <ion-item>
+    <ion-label position="floating">Categoria</ion-label>
+    <ion-input [(ngModel)]="category.name" type="text"></ion-input>
+  </ion-item>  -->
+
+
+  <ion-item>
+  <ion-label for="">Horário</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="dados.hour" type="time"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label>Periodicidade</ion-label>
+    <ion-select interface="action-sheet" class="custom-options">
+      <ion-select-option value="brown">Todos os dias</ion-select-option>
+      <ion-select-option value="blonde">Segunda - Sexta</ion-select-option>
+      <ion-select-option value="black">Somente hoje</ion-select-option>
+      <ion-select-option value="red">Todos sábados</ion-select-option>
+      <ion-select-option value="red">Todos domingos</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label>
+      Dias
+    </ion-label>
+    <div>
+      <ion-button 
+        shape="round"
+        [ngClass]="{'diaSelecionado':verificarDiaMarcado(i)}"
+        *ngFor="let day of days; let i = index" 
+        (click)="setDays(i);" > {{day}} 
+       </ion-button>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Questões
+    </ion-label>   
+  </ion-item>
+
+  <ion-item>
+    <ion-button (click)="addQuestao();">Adicionar Tarefas</ion-button>
+  </ion-item>
+
+  <ion-item *ngFor="let question of dados.questions; let i = index" >
+    <ion-label>
+      <p>{{question.description}}</p>
+    </ion-label>  
+    <ion-icon (click)="deleteQuestion(question);" name="close-outline" slot="end"></ion-icon>
+    <ion-icon (click)="editQuestion(question);" name="create-outline" slot="end"></ion-icon>
+  </ion-item>
+  
+  <ion-button expand ="full" (click)="saveLista();" >Editar lista</ion-button>
+  <!-- <ion-button expand ="full" (click)="salvar();" >Criar lista</ion-button> -->
+
+
+
+</ion-content>

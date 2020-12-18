@@ -9,5 +9,4 @@ export class User {
     public confirmPassword: string = null;
 
     public listqs: List[] = new Array<List>();
-
 }

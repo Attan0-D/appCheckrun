@@ -27,6 +27,7 @@ export class CreatedUserPage implements OnInit {
     this._userService.cadastrar(this.user).subscribe(response => {
       return response
     })
+    this._router.navigate(['/login'])
     
   }
 

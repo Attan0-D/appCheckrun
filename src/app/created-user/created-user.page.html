@@ -32,18 +32,25 @@
           <ion-input [(ngModel)]="user.confirmPassword" type="password"></ion-input>
         </ion-item>
       
-        <ion-label>Aceito os <a (click)="termosCondicoes();">termos e condições</a></ion-label>
-        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-        <ion-button expand="full" (click)="criarUsuario()" >Criar Conta</ion-button>
-
-        
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Aceito os <a (click)="termosCondicoes();">termos e condições</a></ion-label>
+          <ion-checkbox color="primary"></ion-checkbox>    
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   
-  
+          <ion-button expand="full" (click)="criarUsuario()" >Criar Conta</ion-button>
+        
+
     
 </ion-content>
 

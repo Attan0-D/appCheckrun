@@ -1,26 +1,50 @@
-<ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          
-          <ion-list-header>Check&Run</ion-list-header>
-          <ion-note></ion-note>
-
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+<ion-app >
+  <ion-split-pane contentId="main-content" >
+    <ion-menu contentId="main-content" type="overlay" class ='menu' >
+      <ion-content >
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div id="titulo-app">
+                <ion-toolbar class = titulo>
+                  <img id="img-logo"width="200" height="200" src="./assets/logo.png"/>
+                </ion-toolbar>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+             
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index" >
+            <ion-item  class="menu1"(click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+            </ion-item>           
+          </ion-menu-toggle >
+        
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div id="botao-sair">
+                <ion-button class = "btnsair"(click)="logout();">Sair</ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
-          <ion-menu-toggle>
-            <ion-button (click)="logout();">Sair</ion-button>
-          </ion-menu-toggle>
-          
-        </ion-list>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <footer id="termos-condicoes3">
+                  <ion-icon name="layers-outline"></ion-icon>
+                  <ion-label><a (click)="termosCondicoes();">Termos e condições de Uso</a></ion-label>
+                </footer>
+              </ion-col>            
+            </ion-row>
+          </ion-grid>
       </ion-content>
+      
+   
     </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+    <ion-router-outlet id="main-content" ></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

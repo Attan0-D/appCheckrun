@@ -24,3 +24,35 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-toolbar{
+    --background: var(--ion-color-header-color);
+}
+
+ion-content{
+     --background: var(--ion-color-secondary);
+ }
+
+ion-item{
+   --background: var(--ion-color-secondary);
+}
+
+ion-list{
+   --background: var(--ion-color-secondary); 
+}
+
+ion-menu-toggle{
+   --background: var(--ion-color-secondary);
+}
+
+ion-label, ion-title, ion-menu, ion-split-pane,ion-app{
+   --background: var(--ion-color-secondary);
+   font-weight: bold;
+}
+
+ion-header ion-toolbar {
+   --color: #fff;
+}
+
+
+

@@ -12,14 +12,20 @@ export class ShowListPage implements OnInit {
 
   public lists: List[] = new Array<List>();
 
+
   constructor(
     private _router: Router,
     private _listService: ListService) 
     {
       this.obterListas();
-    }
-
+     
+    } 
+  
   ngOnInit() {
+  } 
+
+  ionViewDidEnter() {
+    this.obterListas();
   }
 
   async obterListas(){
@@ -34,5 +40,20 @@ export class ShowListPage implements OnInit {
   removeList(index){
     this.lists.splice(index,1);
   }
+
+  verLista(list_id: number){
+    this._router.navigate([`/list/${list_id}`])
+  }
+
+  editarLista(id:number){
+    console.log(id)
+    this._router.navigate([`edit/${id}`]);
+  }
+
+  // TENTATIVA DAVID
+   // this._router.navigateByUrl('/show-list', {skipLocationChange: true}).then(() => {
+    //   this._router.navigate(["/show-list"]);
+    // });
+  
 }
  

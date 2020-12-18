@@ -9,10 +9,46 @@
 
 <ion-content>
 
+  <ion-grid>
+    
 
-  <ion-col>
-    <h2>Você ainda não possui listas. Faça-as Agora!</h2>
-    <ion-button (click)="registerList();" expand="full">Fazer Lista</ion-button>
-  </ion-col>
+    <ion-row>
+      <ion-col>
+        <h2>Olá <strong>{{user.name}}</strong>,😆<br>
+         seja bem vindo ao Check & Run!</h2>
+      </ion-col>
+    </ion-row>
+
+    <h4><i>Em apenas alguns segundos, vamos te ajudar a organizar suas tarefas!✅</i></h4>
+
+    
+      <ion-row>
+        <ion-col>
+          <div class="ajuda">
+          <p>{{user.name}}, não sabe por onde começar?</p>
+          <p><a href="/ajuda-pratica">Clique aqui</a> e conheça algumas dicas que reservamos para você.</p> 
+          </div>
+        </ion-col>
+      </ion-row>
+    
+    
+
+
+
+    <ion-row>
+      <ion-col>
+        <h2>Veja aqui suas listas ou cadastre uma agora.</h2>
+        <ion-button (click)="registerList();" expand="full">Vamos lá!</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+
+
+  </ion-grid>
+
+
+   
+
 
 </ion-content>

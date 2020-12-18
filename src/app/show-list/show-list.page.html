@@ -1,10 +1,9 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar class="headerColor">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>Mostrar Lista</ion-title>
+    <ion-title>Minhas Listas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,36 +12,64 @@
     <ion-row *ngIf="lists.length > 0">
 
         <ion-col>
-
-          
+  
           <ion-list>
-            <ion-item *ngFor= "let list of lists"> 
+            <ion-item
+            *ngFor= "let list of lists"
+            (click)="verLista(list.id)"
+            >
               <ion-label> 
                 {{ list.name }}
               </ion-label> 
-              <ion-icon (click)="removeList(i);" name="create-outline" slot="end" ></ion-icon>
-              <ion-icon (click)="removeList(i);" name="close-outline" slot="end" ></ion-icon>
+                  
+
+              <ion-icon 
+                name="chevron-forward-outline" 
+                slot="end"
+                ></ion-icon>
             </ion-item>
           </ion-list>
 
-          <ion-button (click)="registerList();" expand="full">Fazer Lista</ion-button>
+
+          <!-- <ion-button (click)="editarLista();" expand="full">Editar</ion-button> -->
+          <ion-button (click)="registerList();" expand="full">Nova Lista</ion-button>
 
 
         </ion-col>
     </ion-row>
-    
 
+    <div>
+      <ion-row *ngIf="lists.length == 0">
+        <ion-col>
+          <img id = "img-list"width="150" height="150" src="./assets/caixa.jpeg"/>
+        </ion-col>
+      </ion-row>
+    </div>
 
 
     <ion-row *ngIf="lists.length == 0">
       
-    <ion-col>
-      <h2>Você ainda não possui listas. Faça-as Agora!</h2>
-      <ion-button (click)="registerList();" expand="full">Fazer Lista</ion-button>
-    </ion-col>
+      <div class="text-list">
+        <ion-row>
+          <ion-col>
+            <p>Que pena! Você não possui lista(s) cadastrada(s). Crie agora sua primeira lista</p>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-row>
 
-  </ion-row>
+
+    <ion-row ion-row *ngIf="lists.length == 0">
+      <ion-col>
+        <ion-button (click)="registerList();"expand="full">Criar Lista</ion-button>
+
+      </ion-col>
+    </ion-row>
+     
     
+
+
+
     <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>

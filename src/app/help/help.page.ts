@@ -14,8 +14,8 @@ export class HelpPage implements OnInit {
   ngOnInit() {
   }
 
-  toBeginning(){
-    this._router.navigate(['/beginning']);
+  toHome(){
+    this._router.navigate(['/home']);
   }
 
 }

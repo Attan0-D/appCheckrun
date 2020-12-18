@@ -14,6 +14,9 @@ import { UserService } from './UserServices';
 export class ListService implements IListService{
 
     public apiUrl: string = Global.ApiUrl+"list";
+    
+    public list_id: number;
+    public list: List[] = [];
 
     private _userLogado: User = new User()
 
@@ -25,12 +28,12 @@ export class ListService implements IListService{
         }
 
     retornarListas(): Promise<List[]> {
+  
         const promise = new Promise<List[]>(async (resolve, reject) => {
             try{
                 const user = await this._userService.buscarUsuario().toPromise();
-                console.warn(user.listqs);
-                //user.lists = user.listqs;
-                console.warn(user.listqs);
+                this.list_id = user.id;
+                this.list = user.listqs;
                 resolve(user.listqs);
 
             }catch(e){
@@ -42,11 +45,7 @@ export class ListService implements IListService{
 
     cadastrar(dados: List, loading: HTMLIonLoadingElement): Observable<List> {
         
-        if( !dados.name ){ 
-            loading.dismiss();
-            throw new Error('Preencha o nome da lista');
-        }
-
+        if( !dados.name )throw new Error('Preencha o nome da lista');
         if( !dados.days ) throw new Error('Preencha os dias da lista');
         if( !dados.hour ) throw new Error('Preencha o horário da lista');
         if( !dados.category_id ) throw new Error('Preencha a categoria da lista');
@@ -59,13 +58,21 @@ export class ListService implements IListService{
         return this._http.post<List>(this.apiUrl,dados) 
     }
 
-    atualizar(list : List): Observable<List>{
-        throw new Error('Precisa ser implementada')
-        // return this._http.post<List>(this.apiUrl,{name})  
-    }  
+    editar(list: List): Observable<List>{
+        if( !list.name )throw new Error('Preencha o nome da lista');
+        if( !list.days ) throw new Error('Preencha os dias da lista');
+        if( !list.hour ) throw new Error('Preencha o horário da lista');
+        if( !list.category_id ) throw new Error('Preencha a categoria da lista');
+        if( !list.questions.length) throw new Error('Preencha as questões');       
+        
+        list.days = JSON.stringify(list.days);
 
-    excluir(list : List): void{
-        throw new Error('Precisa ser implementada')
+        return this._http.put<List>(`${this.apiUrl}/${list.id}`,list)
+    }
+
+
+    excluir(id:number): Observable<List>{
+        return this._http.delete<List>(`${this.apiUrl}/${id}`);
     }
 
     retornarIdLista():void{

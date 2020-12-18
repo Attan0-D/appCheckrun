@@ -51,7 +51,7 @@ const routes: Routes = [
     loadChildren: () => import('./beginning/beginning.module').then( m => m.BeginningPageModule)
   },
   {
-    path: 'list',
+    path: 'list/:id',
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
   {
@@ -69,6 +69,22 @@ const routes: Routes = [
   {
     path: 'terms-and-conditions',
     loadChildren: () => import('./terms-and-conditions/terms-and-conditions.module').then( m => m.TermsAndConditionsPageModule)
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule)
+  },
+  {
+    path: 'check/:id',
+    loadChildren: () => import('./check/check.module').then( m => m.CheckPageModule)
+  },
+  {
+    path: 'terms-and-conditions2',
+    loadChildren: () => import('./terms-and-conditions2/terms-and-conditions2.module').then( m => m.TermsAndConditions2PageModule)
+  },
+  {
+    path: 'ajuda-pratica',
+    loadChildren: () => import('./ajuda-pratica/ajuda-pratica.module').then( m => m.AjudaPraticaPageModule)
   },
   
 
