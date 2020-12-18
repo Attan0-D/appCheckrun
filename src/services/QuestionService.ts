@@ -42,7 +42,6 @@ export class QuestionService implements IQuestionService{
     }  
 
     listar(id:number):  Observable<Question>{
-
         return this._http.get<Question>(`${this.apiUrl}/${id}`)
         
     }
